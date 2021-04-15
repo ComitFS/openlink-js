@@ -1,12 +1,12 @@
 # Globility implementation of Openlink library for Strophe.js
 
-##Description
+## Description
 
 This application uses [Strophe.js](https://github.com/strophe/strophejs) to provide an implementation of the [Openlink XMPP API](http://openlink.4ng.net:8080/openlink/xep-xxx-openlink_15-11.xml).
 
-##Components
+## Components
 
-###OpenlinkJS XMPP Library
+### OpenlinkJS XMPP Library
 
 The OpenlinkJS library itself is found in `strophe.openlink.js`. It is a plugin for the [Strophe.js](https://github.com/strophe/strophejs) library.
 
@@ -19,13 +19,13 @@ Dependencies for the strophe and strophe.openlink libraries are none. jQuery is 
 
 **NOTE:** The steps below are only for compiling the Demo Application, they are not needed to use the plugin and strophe library.
 
-###Openlink Demo Application
+### Openlink Demo Application
 
 The Openlink Demo Application consists of the files `App.js` and `index.html`.
 
 Please refer to `index.html` to view an example of the application within a page. You will need to compile the application before running it as per the steps below.
 
-##Getting started with the Openlink Demo Application
+## Getting started with the Openlink Demo Application
 
 If you haven’t already done so, install Node.js and NPM. You also need to install the Grunt command line interface by running 
 `npm install -g grunt-cli`. This allows you to run the grunt command from anywhere on your system.
@@ -36,7 +36,7 @@ Run `grunt build` to compile the assets into `build/`.
 
 Run `grunt watch` to auto compile the assets into `build/` as changes are made to `assets/`.
 
-###Layout
+### Layout
 
 The items required to use the application can all be found in the `build` folder.
 * `assets/img` - Image assets
@@ -46,7 +46,7 @@ The items required to use the application can all be found in the `build` folder
     * javascript - `application.js`.
     * init script which stars the application - `App.start({...});`
 
-###Application Arguments
+### Application Arguments
 
 The applications arguments are:
 * `debug`: true/false - enables debugging to console. 
@@ -62,11 +62,11 @@ Two application parameters need to be defined in the app itself:
 * `BIND_PATH`: /http-bind - defines the bind URL path.
 * `BOSH_URL`: defines the full URL used to connect to the BOSH service. This is built from the `bosh_domain` and `BIND_PATH`.
 
-##Application Guide
+## Application Guide
 
 Whilst the index.html and App.js files are only a guide they follow the standard structure for Strophe.js applications.
 
-###Connecting
+### Connecting
 
     Session.connection = new Strophe.Connection(BOSH_URL);
     connect({
@@ -79,12 +79,12 @@ Whilst the index.html and App.js files are only a guide they follow the standard
 Where connect is a function as defined in `App.js`. This callback handles all connection events in the `connectionCallback` object and triggers
 the Strophe.js `Session.connection.connect` method which actually invokes the XMPP connection.
 
-###Disconnecting
+### Disconnecting
 
 **Disconnect**
     Session.connection.disconnect();
 
-###Connected/Disconnected Events
+### Connected/Disconnected Events
 
 **Connected Event** This can be listened for in the `connectionCallback` alongside several other XMPP connection notifications like authentication failed, etc.
 
@@ -100,14 +100,14 @@ the Strophe.js `Session.connection.connect` method which actually invokes the XM
         App.disconnected();
     }
 
-###Presence
+### Presence
 
 Presence can be controlled very finely in XMPP. To fire a presence packet and notify the server that you're ready to receive messages simply call:
 
     Session.connection.openlink.sendPresence();
 
 
-###Call Events
+### Call Events
 
 A call handler can be registered to simplify the process of receiving pubsub call events. Simply call:
 
@@ -117,6 +117,6 @@ Store the returned callHandlerId in order to unregister the handler on disconnec
 
     Session.connection.openlink.removeCallHandler(Session.callHandlerId);
 
-##License
+## License
 
 `This file is subject to the terms and conditions defined 3in file 'LICENSE', which is part of this source code package.`
